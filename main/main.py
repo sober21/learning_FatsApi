@@ -10,6 +10,11 @@ app = FastAPI()
 #     name: str
 #     price: float
 #     is_offer: bool | None = None
+@app.get('/files/{file_path:path}')
+async def read_file(file_path: str):
+    return {'file_path': file_path}
+
+
 class ModelName(Enum):
     alexnet = "alexnet"
     resnet = "resnet"
