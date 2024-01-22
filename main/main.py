@@ -35,7 +35,17 @@ async def root():
     return {"message": "Hello, World"}
 
 
-@app.get("/items/{item_id}")
+@app.get('/home/')
+async def home(query: int | None = None):
+    d = {0: "Главная",
+         1: "Гостевая",
+         2: "Расчёты",
+         3: "О нас"}
+    if query:
+        return d[query]
+    return 'Главная'
+
+@app.get("/items/{item_id")
 async def read_item(item_id: int):
     return {"item_id": item_id}
 
